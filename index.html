@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Cronache</title>
+  <meta name="description" content="Racconti brevi ispirati a fatti storici reali: capitani di ventura, assi dei cieli, pirati e altre figure di spicco." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,600;0,800;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div id="app" class="app" aria-live="polite">
+
+    <header class="topbar">
+      <button id="restart" class="ghost-btn" type="button" aria-label="Torna alla prima storia">
+        <span class="restart-icon" aria-hidden="true">↺</span>
+      </button>
+
+      <div class="progress" id="progress">
+        <span id="progress-current">–</span><span class="progress-sep">/</span><span id="progress-total">–</span>
+      </div>
+
+      <button id="share" class="ghost-btn" type="button" aria-label="Condividi questa storia">
+        <span class="share-icon" aria-hidden="true">⤴</span>
+      </button>
+    </header>
+
+    <main id="reader" class="reader">
+      <div id="loading" class="loading">Cronache si sta aprendo…</div>
+
+      <article id="story" class="story" hidden>
+        <p class="meta" id="story-meta"></p>
+        <h1 id="story-title" class="title"></h1>
+        <p class="ambientazione" id="story-ambientazione"></p>
+        <hr class="rule" />
+        <div id="story-body" class="body"></div>
+
+        <details id="story-nota" class="nota">
+          <summary>Nota storica</summary>
+          <div id="story-nota-body"></div>
+        </details>
+      </article>
+    </main>
+
+    <button id="zone-prev" class="edge-zone edge-prev" type="button" aria-label="Storia precedente"></button>
+    <button id="zone-next" class="edge-zone edge-next" type="button" aria-label="Storia successiva"></button>
+
+    <footer class="bottombar">
+      <button id="prev" class="chevron" type="button" aria-label="Storia precedente">‹</button>
+      <span class="hint">scorri o usa le frecce</span>
+      <button id="next" class="chevron" type="button" aria-label="Storia successiva">›</button>
+    </footer>
+
+    <div id="toast" class="toast" role="status" aria-hidden="true"></div>
+
+  </div>
+
+  <script src="app.js" defer></script>
+</body>
+</html>

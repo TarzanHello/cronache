@@ -1,0 +1,38 @@
+name: Aggiorna storie
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "stories/**"
+      - "scripts/build.mjs"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - run: npm install
+
+      - run: npm run build
+
+      - name: Salva stories.json se cambiato
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if ! git diff --quiet -- stories.json; then
+            git add stories.json
+            git commit -m "Aggiorna stories.json"
+            git push
+          else
+            echo "Nessuna modifica a stories.json"
+          fi
